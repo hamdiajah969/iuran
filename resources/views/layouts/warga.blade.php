@@ -7,7 +7,6 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
 
     <style>
-        /* ===== SIDEBAR ===== */
         .sidebar {
             height: 100vh;
             background: linear-gradient(135deg, #198754, #20c997);
@@ -31,28 +30,23 @@
             background-color: rgba(255, 255, 255, 0.15);
             border-radius: 5px;
         }
-
-        /* ===== MAIN CONTENT ===== */
         .main-content {
-            margin-left: 250px; /* beri ruang untuk sidebar */
+            margin-left: 250px;
             padding: 40px 60px;
             min-height: 100vh;
             background-color: #f8f9fa;
             display: flex;
-            justify-content: center; /* pusat horizontal */
-            align-items: flex-start; /* mulai dari atas */
+            justify-content: center;
+            align-items: flex-start;
         }
-
         .content-wrapper {
             width: 100%;
-            max-width: 1000px; /* biar tidak terlalu melebar */
+            max-width: 1000px;
             background: #fff;
             padding: 30px;
             border-radius: 12px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
         }
-
-        /* ===== RESPONSIVE MODE ===== */
         @media (max-width: 992px) {
             .sidebar {
                 width: 200px;
@@ -78,11 +72,11 @@
                 margin: 0;
             }
             .sidebar ul {
-                display: none; /* Sembunyikan menu di layar kecil */
+                display: none;
             }
             .main-content {
                 margin-left: 0;
-                padding-top: 80px; /* beri jarak agar konten tidak tertutup sidebar */
+                padding-top: 80px;
                 justify-content: center;
             }
         }

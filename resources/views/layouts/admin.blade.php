@@ -26,7 +26,6 @@
             border-radius: 5px;
         }
 
-        /* Main content */
         .main-content {
             margin-left: 250px;
             padding: 40px 60px;nan */
@@ -50,7 +49,7 @@
 <body>
     <!-- Sidebar -->
     <nav class="sidebar">
-        <h4 class="mb-4">Admin Panel</h4>
+        <h4 class="mb-4">Admin Panell</h4>
         <ul class="nav flex-column">
             <li class="nav-item">
                 <a class="nav-link active" href="{{ route('admin.dashboard') }}">Dashboard</a>
