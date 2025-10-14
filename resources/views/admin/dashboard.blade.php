@@ -15,7 +15,7 @@
                 <div class="card-header">Users</div>
                 <div class="card-body">
                     <h5 class="card-title">{{ $userCount }}</h5>
-                    <p class="card-text">Total registered users</p>
+                    <p class="card-text">Total user terdaftar</p>
                 </div>
             </div>
         </div>
@@ -24,7 +24,7 @@
                 <div class="card-header">Members</div>
                 <div class="card-body">
                     <h5 class="card-title">{{ $memberCount }}</h5>
-                    <p class="card-text">Total members</p>
+                    <p class="card-text">Total member</p>
                 </div>
             </div>
         </div>
@@ -33,7 +33,7 @@
                 <div class="card-header">Categories</div>
                 <div class="card-body">
                     <h5 class="card-title">{{ $categoryCount }}</h5>
-                    <p class="card-text">Total categories</p>
+                    <p class="card-text">Total kategori</p>
                 </div>
             </div>
         </div>
@@ -42,7 +42,7 @@
                 <div class="card-header">Payments</div>
                 <div class="card-body">
                     <h5 class="card-title">{{ $paymentCount }}</h5>
-                    <p class="card-text">Total payments</p>
+                    <p class="card-text">Total pembayaran</p>
                 </div>
             </div>
         </div>

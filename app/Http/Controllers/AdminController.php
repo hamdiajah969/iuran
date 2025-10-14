@@ -13,7 +13,7 @@ class AdminController extends Controller
 {
     public function users()
     {
-        $users = User::all();
+        $users = User::where('level', '!=', 'warga')->get();
         return view('admin.users', compact('users'));
     }
 

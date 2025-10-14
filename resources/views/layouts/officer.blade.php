@@ -32,7 +32,6 @@
                 <li class="nav-item">
                     <a class="nav-link active" href="{{ route('officer.dashboard') }}">Dashboard</a>
                 </li>
-                <!-- Add more menu items here -->
             </ul>
             <div class="mt-auto">
                 <form method="POST" action="{{ route('logout') }}">

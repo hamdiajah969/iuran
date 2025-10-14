@@ -40,7 +40,7 @@
         <select class="form-select" id="level" name="level" required>
             <option value="admin" {{ old('level') == 'admin' ? 'selected' : '' }}>Admin</option>
             <option value="officer" {{ old('level') == 'officer' ? 'selected' : '' }}>Officer</option>
-            <option value="warga" {{ old('level') == 'warga' ? 'selected' : '' }}>Warga</option>
+            {{-- <option value="warga" {{ old('level') == 'warga' ? 'selected' : '' }}>Warga</option> --}}
         </select>
     </div>
     <button type="submit" class="btn btn-primary">Create</button>

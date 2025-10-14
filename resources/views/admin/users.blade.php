@@ -42,7 +42,7 @@
                             </tbody>
                         </table>
                     </div>
-                    <a href="{{ route('admin.users.create') }}" class="btn btn-success mt-3">Add New User</a>
+                    <a href="{{ route('admin.users.create') }}" class="btn btn-success mt-3">Tambah user baru</a>
                 </div>
             </div>
         </div>

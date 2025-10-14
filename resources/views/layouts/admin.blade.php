@@ -9,13 +9,16 @@
     <style>
         .sidebar {
             height: 100vh;
-            background: linear-gradient(135deg, #28a745, #20c997);
+            background: linear-gradient(135deg, #198754, #20c997);
             color: white;
             position: fixed;
             width: 250px;
             top: 0;
             left: 0;
             padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            z-index: 1000;
         }
         .sidebar .nav-link {
             color: white;
@@ -25,10 +28,9 @@
             background-color: rgba(255, 255, 255, 0.15);
             border-radius: 5px;
         }
-
         .main-content {
             margin-left: 250px;
-            padding: 40px 60px;nan */
+            padding: 40px 60px;
             min-height: 100vh;
             background-color: #f8f9fa;
             display: flex;
