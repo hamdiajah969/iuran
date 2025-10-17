@@ -16,19 +16,19 @@
                                     <th>Period</th>
                                     <th>Petugas</th>
                                     <th>Jumlah Tagihan</th>
-                                    <th>Nominal Tagihan</th>
+                                    <th>Status</th>
                                     <th>Payment Date</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @forelse($payments as $payment)
                                 <tr>
-                                    <td>{{ $payment->id }}</td>
+                                    <td>{{ $loop->iteration }}</td>
                                     <td>{{ $payment->nominal }}</td>
                                     <td>{{ $payment->duesCategory->period ?? 'N/A' }}</td>
                                     <td>{{ $payment->petugas }}</td>
                                     <td>{{ $payment->jumlah_tagihan }}</td>
-                                    <td>{{ $payment->nominal_tagihan }}</td>
+                                    <td>{{ $payment->status }}</td>
                                     <td>{{ $payment->created_at->format('d-m-Y H:i') }}</td>
                                 </tr>
                                 @empty

@@ -4,7 +4,7 @@
 <div class="container-fluid">
     <div class="row justify-content-center">
         <div class="col-12">
-            <h1 class="text-center mb-4">Pengguna</h1>
+            <h1 class="text-center mb-4">Warga</h1>
             <div class="card">
                 <div class="card-body">
                     <div class="table-responsive">
@@ -12,12 +12,12 @@
                             <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Nama</th>
+                                    <th>Name</th>
                                     <th>Username</th>
-                                    <th>Telepon</th>
-                                    <th>Alamat</th>
+                                    <th>Phone</th>
+                                    <th>Address</th>
                                     <th>Level</th>
-                                    <th>Aksi</th>
+                                    <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -30,8 +30,8 @@
                                     <td>{{ $user->address }}</td>
                                     <td>{{ $user->level }}</td>
                                     <td>
-                                        <a href="{{ route('admin.users.edit', $user->id) }}" class="btn btn-sm btn-primary">Edit</a>
-                                        <form action="{{ route('admin.users.delete', $user->id) }}" method="POST" style="display:inline-block;" onsubmit="return confirm('Apakah Anda yakin ingin menghapus pengguna ini?');">
+                                        <a href="{{ route('admin.warga.edit', $user->id) }}" class="btn btn-sm btn-primary">Edit</a>
+                                        <form action="{{ route('admin.users.delete', $user->id) }}" method="POST" style="display:inline-block;" onsubmit="return confirm('Are you sure you want to delete this user?');">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-sm btn-danger">Hapus</button>
@@ -42,7 +42,7 @@
                             </tbody>
                         </table>
                     </div>
-                    <a href="{{ route('admin.users.create') }}" class="btn btn-success mt-3">Tambah pengguna baru</a>
+                    <a href="{{ route('admin.warga.create') }}" class="btn btn-success mt-3">Tambah warga baru</a>
                 </div>
             </div>
         </div>

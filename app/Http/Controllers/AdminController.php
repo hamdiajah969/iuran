@@ -202,16 +202,27 @@ class AdminController extends Controller
         $validated = $request->validate([
             'users_id' => 'required|exists:users,id',
             'dues_categories_id' => 'required|exists:dues_categories,id',
+            'nominal' => 'required|integer|min:0',
             'petugas' => 'required|in:admin,officer',
         ]);
 
         $category = DuesCategory::find($validated['dues_categories_id']);
-        $validated['nominal'] = $category->nominal;
         $validated['period'] = $category->period;
         $validated['jumlah_tagihan'] = $category->nominal;
-        $validated['nominal_tagihan'] = $category->nominal;
 
-        Payment::create($validated);
+        // Calculate total paid for this user-category combination
+        $totalPaid = Payment::where('users_id', $validated['users_id'])
+            ->where('dues_categories_id', $validated['dues_categories_id'])
+            ->sum('nominal') + $validated['nominal'];
+
+        $validated['status'] = ($totalPaid >= $category->nominal) ? 'lunas' : 'belum lunas';
+
+        $payment = Payment::create($validated);
+
+        // Update status for all previous payments in this user-category group
+        Payment::where('users_id', $validated['users_id'])
+            ->where('dues_categories_id', $validated['dues_categories_id'])
+            ->update(['status' => $validated['status']]);
 
         return redirect()->route('admin.payments')->with('success', 'Payment created successfully.');
     }
@@ -219,5 +230,82 @@ class AdminController extends Controller
     public function detailPayment(Payment $payment)
     {
         return view('admin.detail_payment', compact('payment'));
+    }
+
+    public function deletePayment(Payment $payment)
+    {
+        $usersId = $payment->users_id;
+        $duesCategoriesId = $payment->dues_categories_id;
+
+        $payment->delete();
+
+        // Recalculate total paid for this user-category combination
+        $totalPaid = Payment::where('users_id', $usersId)
+            ->where('dues_categories_id', $duesCategoriesId)
+            ->sum('nominal');
+
+        $category = DuesCategory::find($duesCategoriesId);
+        $newStatus = ($totalPaid >= $category->nominal) ? 'lunas' : 'belum lunas';
+
+        // Update status for all remaining payments in this user-category group
+        Payment::where('users_id', $usersId)
+            ->where('dues_categories_id', $duesCategoriesId)
+            ->update(['status' => $newStatus]);
+
+        return redirect()->route('admin.payments')->with('success', 'Payment deleted successfully.');
+    }
+
+    public function warga()
+    {
+        $users = User::where('level', 'warga')->get();
+        return view('admin.warga', compact('users'));
+    }
+
+    public function createWarga()
+    {
+        return view('admin.create_warga');
+    }
+
+    public function storeWarga(Request $request)
+    {
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'username' => 'required|string|max:255|unique:users',
+            'password' => 'required|string|min:4',
+            'nohp' => 'required|string|max:20',
+            'address' => 'required|string|max:255',
+        ]);
+
+        $validated['password'] = bcrypt($validated['password']);
+        $validated['level'] = 'warga';
+        User::create($validated);
+
+        return redirect()->route('admin.warga')->with('success', 'Warga created successfully.');
+    }
+
+    public function editWarga(User $user)
+    {
+        return view('admin.edit_warga', compact('user'));
+    }
+
+    public function updateWarga(Request $request, User $user)
+    {
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'username' => 'required|string|max:255|unique:users,username,' . $user->id,
+            'password' => 'nullable|string|min:4',
+            'nohp' => 'required|string|max:20',
+            'address' => 'required|string|max:255',
+        ]);
+
+        if (!empty($validated['password'])) {
+            $validated['password'] = bcrypt($validated['password']);
+        } else {
+            unset($validated['password']);
+        }
+
+        $user->update($validated);
+
+        return redirect()->route('admin.warga')->with('success', 'Warga updated successfully.');
     }
 }

@@ -39,6 +39,13 @@ Route::middleware('authadmin')->group(function () {
     Route::get('/admin/payments/create', [App\Http\Controllers\AdminController::class, 'createPayment'])->name('admin.payments.create');
     Route::post('/admin/payments', [App\Http\Controllers\AdminController::class, 'storePayment'])->name('admin.payments.store');
     Route::get('/admin/payments/{payment}/detail', [App\Http\Controllers\AdminController::class, 'detailPayment'])->name('admin.payments.detail');
+    Route::delete('/admin/payments/{payment}', [App\Http\Controllers\AdminController::class, 'deletePayment'])->name('admin.payments.delete');
+
+    Route::get('/admin/warga', [App\Http\Controllers\AdminController::class, 'warga'])->name('admin.warga');
+    Route::get('/admin/warga/create', [App\Http\Controllers\AdminController::class, 'createWarga'])->name('admin.warga.create');
+    Route::post('/admin/warga', [App\Http\Controllers\AdminController::class, 'storeWarga'])->name('admin.warga.store');
+    Route::get('/admin/warga/{user}/edit', [App\Http\Controllers\AdminController::class, 'editWarga'])->name('admin.warga.edit');
+    Route::put('/admin/warga/{user}', [App\Http\Controllers\AdminController::class, 'updateWarga'])->name('admin.warga.update');
 });
 
 Route::middleware('authofficer')->group(function () {

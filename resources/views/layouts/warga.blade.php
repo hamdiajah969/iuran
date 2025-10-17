@@ -85,7 +85,7 @@
 <body>
     <!-- Sidebar -->
     <nav class="sidebar">
-        <h4 class="mb-4">Warga Panel</h4>
+        <h4 class="mb-4">Warga</h4>
         <ul class="nav flex-column">
             <li class="nav-item">
                 <a class="nav-link active" href="{{ route('warga.dashboard') }}">Dashboard</a>

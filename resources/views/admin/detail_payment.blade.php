@@ -12,7 +12,7 @@
         <p class="card-text"><strong>Category:</strong> {{ $payment->duesCategory->period ?? 'N/A' }}</p>
         <p class="card-text"><strong>Petugas:</strong> {{ $payment->petugas }}</p>
         <p class="card-text"><strong>Jumlah Tagihan:</strong> {{ $payment->jumlah_tagihan }}</p>
-        <p class="card-text"><strong>Nominal Tagihan:</strong> {{ $payment->nominal_tagihan }}</p>
+        <p class="card-text"><strong>Status:</strong> {{ $payment->status }}</p>
         <p class="card-text"><strong>Created At:</strong> {{ $payment->created_at }}</p>
         <p class="card-text"><strong>Updated At:</strong> {{ $payment->updated_at }}</p>
     </div>

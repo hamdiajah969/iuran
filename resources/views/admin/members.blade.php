@@ -21,7 +21,7 @@
                             <tbody>
                                 @foreach($members as $member)
                                 <tr>
-                                    <td>{{ $member->id }}</td>
+                                    <td>{{ $loop->iteration }}</td>
                                     <td>{{ $member->user->name ?? 'N/A' }}</td>
                                     <td>{{ $member->duesCategory->period ?? 'N/A' }}</td>
                                     <td>{{ $member->registration_date }}</td>
@@ -30,7 +30,7 @@
                                         <form action="{{ route('admin.members.delete', $member->id) }}" method="POST" style="display:inline-block;" onsubmit="return confirm('Are you sure you want to delete this member?');">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                            <button type="submit" class="btn btn-sm btn-danger">hapus</button>
                                         </form>
                                     </td>
                                 </tr>
@@ -38,7 +38,7 @@
                             </tbody>
                         </table>
                     </div>
-                    <a href="{{ route('admin.members.create') }}" class="btn btn-success mt-3">Add New Member</a>
+                    <a href="{{ route('admin.members.create') }}" class="btn btn-success mt-3">Tambah Member Baru</a>
                 </div>
             </div>
         </div>

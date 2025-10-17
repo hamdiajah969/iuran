@@ -1,4 +1,4 @@
-        @extends('layouts.admin')
+@extends('layouts.admin')
 
 @section('content')
 <h1>Create Payment</h1>
@@ -35,7 +35,7 @@
     </div>
     <div class="mb-3">
         <label for="nominal" class="form-label">Nominal</label>
-        <input type="number" class="form-control" id="nominal" name="nominal" value="{{ old('nominal') }}" readonly required min="0">
+        <input type="number" class="form-control" id="nominal" name="nominal" value="{{ old('nominal') }}" required min="0">
     </div>
     <div class="mb-3">
         <label for="period" class="form-label">Period</label>

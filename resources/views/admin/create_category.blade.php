@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-<h1>Create Category</h1>
+<h1>Buat Kategori</h1>
 
 @if ($errors->any())
 <div class="alert alert-danger">
@@ -34,8 +34,8 @@
             <option value="0" {{ old('status') == '0' ? 'selected' : '' }}>Tidak Aktif</option>
         </select>
     </div>
-    <button type="submit" class="btn btn-primary">Create</button>
-    <a href="{{ route('admin.categories') }}" class="btn btn-secondary">Cancel</a>
+    <button type="submit" class="btn btn-primary">Buat</button>
+    <a href="{{ route('admin.categories') }}" class="btn btn-secondary">Batal</a>
 </form>
 
 <script>

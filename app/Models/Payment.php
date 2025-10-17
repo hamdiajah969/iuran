@@ -13,7 +13,7 @@ class Payment extends Model
         'dues_categories_id',
         'petugas',
         'jumlah_tagihan',
-        'nominal_tagihan',
+        'status',
     ];
 
     public function user()

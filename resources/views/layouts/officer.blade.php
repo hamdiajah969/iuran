@@ -27,7 +27,7 @@
     <div class="d-flex">
         <!-- Sidebar -->
         <nav class="sidebar p-3" style="width: 250px;">
-            <h4 class="mb-4">Officer Panel</h4>
+            <h4 class="mb-4">Officer</h4>
             <ul class="nav flex-column">
                 <li class="nav-item">
                     <a class="nav-link active" href="{{ route('officer.dashboard') }}">Dashboard</a>

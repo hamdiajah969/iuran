@@ -21,7 +21,7 @@
                             <tbody>
                                 @foreach($categories as $category)
                                 <tr>
-                                    <td>{{ $category->id }}</td>
+                                    <td>{{ $loop->iteration }}</td>
                                     <td>{{ $category->period }}</td>
                                     <td>{{ $category->nominal }}</td>
                                     <td>{{ $category->status ? 'Aktif' : 'Tidak Aktif' }}</td>
@@ -30,7 +30,7 @@
                                         <form action="{{ route('admin.categories.delete', $category->id) }}" method="POST" style="display:inline-block;" onsubmit="return confirm('Are you sure you want to delete this category?');">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                            <button type="submit" class="btn btn-sm btn-danger">Hapus</button>
                                         </form>
                                     </td>
                                 </tr>
@@ -38,7 +38,7 @@
                             </tbody>
                         </table>
                     </div>
-                    <a href="{{ route('admin.categories.create') }}" class="btn btn-success mt-3">Add New Category</a>
+                    <a href="{{ route('admin.categories.create') }}" class="btn btn-success mt-3">Tambah Kategori</a>
                 </div>
             </div>
         </div>
