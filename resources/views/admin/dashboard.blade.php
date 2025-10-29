@@ -48,4 +48,49 @@
         </div>
     </div>
 </div>
+<div class="container mt-5">
+  <div class="card shadow-lg border-0">
+    <!-- Header -->
+    <div class="card-header bg-success text-white d-flex justify-content-between align-items-center">
+      <h5 class="mb-0">🧾 Pemasukan</h5>
+      <small>#PMK-2025</small>
+    </div>
+
+    <!-- Body -->
+    <div class="card-body">
+      <!-- Item 1 -->
+      <div class="d-flex justify-content-between align-items-center border-bottom py-2">
+        <div>
+          <strong>Mingguan</strong><br>
+          <small class="text-muted">Tanggal: 29 Okt 2025</small>
+        </div>
+        <span class="text-success fw-semibold">+Rp150.000</span>
+      </div>
+
+      <!-- Item 2 -->
+      <div class="d-flex justify-content-between align-items-center border-bottom py-2">
+        <div>
+          <strong>Bulanan</strong><br>
+          <small class="text-muted">Tanggal: 29 Okt 2025</small>
+        </div>
+        <span class="text-success fw-semibold">+Rp75.000</span>
+      </div>
+
+      <!-- Item 3 -->
+      <div class="d-flex justify-content-between align-items-center border-bottom py-2">
+        <div>
+          <strong>Tahunan</strong><br>
+          <small class="text-muted">Tanggal: 29 Okt 2025</small>
+        </div>
+        <span class="text-success fw-semibold">+Rp50.000</span>
+      </div>
+    </div>
+
+    <!-- Total -->
+    <div class="card-footer bg-light d-flex justify-content-between align-items-center">
+      <span class="fw-semibold text-secondary">Total Pemasukan:</span>
+      <span class="fw-bold text-success fs-5">Rp275.000</span>
+    </div>
+  </div>
+</div>
 @endsection

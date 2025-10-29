@@ -40,6 +40,7 @@ Route::middleware('authadmin')->group(function () {
     Route::post('/admin/payments', [App\Http\Controllers\AdminController::class, 'storePayment'])->name('admin.payments.store');
     Route::get('/admin/payments/{payment}/detail', [App\Http\Controllers\AdminController::class, 'detailPayment'])->name('admin.payments.detail');
     Route::delete('/admin/payments/{payment}', [App\Http\Controllers\AdminController::class, 'deletePayment'])->name('admin.payments.delete');
+    Route::delete('/admin/payments', [App\Http\Controllers\AdminController::class, 'bulkDeletePayment'])->name('admin.payments.bulkDelete');
 
     Route::get('/admin/warga', [App\Http\Controllers\AdminController::class, 'warga'])->name('admin.warga');
     Route::get('/admin/warga/create', [App\Http\Controllers\AdminController::class, 'createWarga'])->name('admin.warga.create');

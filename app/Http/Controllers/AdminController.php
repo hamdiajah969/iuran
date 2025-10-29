@@ -210,7 +210,6 @@ class AdminController extends Controller
         $validated['period'] = $category->period;
         $validated['jumlah_tagihan'] = $category->nominal;
 
-        // Calculate total paid for this user-category combination
         $totalPaid = Payment::where('users_id', $validated['users_id'])
             ->where('dues_categories_id', $validated['dues_categories_id'])
             ->sum('nominal') + $validated['nominal'];
@@ -219,7 +218,6 @@ class AdminController extends Controller
 
         $payment = Payment::create($validated);
 
-        // Update status for all previous payments in this user-category group
         Payment::where('users_id', $validated['users_id'])
             ->where('dues_categories_id', $validated['dues_categories_id'])
             ->update(['status' => $validated['status']]);
@@ -238,8 +236,6 @@ class AdminController extends Controller
         $duesCategoriesId = $payment->dues_categories_id;
 
         $payment->delete();
-
-        // Recalculate total paid for this user-category combination
         $totalPaid = Payment::where('users_id', $usersId)
             ->where('dues_categories_id', $duesCategoriesId)
             ->sum('nominal');
@@ -247,12 +243,42 @@ class AdminController extends Controller
         $category = DuesCategory::find($duesCategoriesId);
         $newStatus = ($totalPaid >= $category->nominal) ? 'lunas' : 'belum lunas';
 
-        // Update status for all remaining payments in this user-category group
         Payment::where('users_id', $usersId)
             ->where('dues_categories_id', $duesCategoriesId)
             ->update(['status' => $newStatus]);
 
         return redirect()->route('admin.payments')->with('success', 'Payment deleted successfully.');
+    }
+
+    public function bulkDeletePayment(Request $request)
+    {
+        $paymentIds = $request->input('payment_ids', []);
+
+        if (empty($paymentIds)) {
+            return redirect()->route('admin.payments')->with('error', 'No payments selected.');
+        }
+
+        $affectedGroups = Payment::whereIn('id', $paymentIds)
+            ->select('users_id', 'dues_categories_id')
+            ->distinct()
+            ->get();
+
+        Payment::whereIn('id', $paymentIds)->delete();
+
+        foreach ($affectedGroups as $group) {
+            $totalPaid = Payment::where('users_id', $group->users_id)
+                ->where('dues_categories_id', $group->dues_categories_id)
+                ->sum('nominal');
+
+            $category = DuesCategory::find($group->dues_categories_id);
+            $newStatus = ($totalPaid >= $category->nominal) ? 'lunas' : 'belum lunas';
+
+            Payment::where('users_id', $group->users_id)
+                ->where('dues_categories_id', $group->dues_categories_id)
+                ->update(['status' => $newStatus]);
+        }
+
+        return redirect()->route('admin.payments')->with('success', 'Selected payments deleted successfully.');
     }
 
     public function warga()

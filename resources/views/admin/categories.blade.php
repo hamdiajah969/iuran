@@ -38,7 +38,7 @@
                             </tbody>
                         </table>
                     </div>
-                    <a href="{{ route('admin.categories.create') }}" class="btn btn-success mt-3">Tambah Kategori</a>
+                    {{-- <a href="{{ route('admin.categories.create') }}" class="btn btn-success mt-3">Tambah Kategori</a> --}}
                 </div>
             </div>
         </div>

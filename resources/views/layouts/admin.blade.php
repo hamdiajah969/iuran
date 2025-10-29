@@ -69,11 +69,11 @@
                     <i class="fas fa-users me-2"></i>Warga
                 </a>
             </li>
-            <li class="nav-item">
+            {{-- <li class="nav-item">
                 <a class="nav-link" href="{{ route('admin.members') }}">
                     <i class="fas fa-user-friends me-2"></i>Anggota
                 </a>
-            </li>
+            </li> --}}
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('admin.categories') }}">
                     <i class="fas fa-tags me-2"></i>Kategori
